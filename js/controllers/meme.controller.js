@@ -8,7 +8,6 @@ function onInit() {
     gCtx = gCanvas.getContext('2d')
 
     renderGallery()
-    // resizeCanvas()
 }
 
 function renderMeme() {
@@ -17,7 +16,7 @@ function renderMeme() {
     elImg.onload = function () {
         gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
         gMeme.lines.forEach((line, idx) => {
-            drawText(line.txt, 50, 50)
+            drawText(line.txt, line.color, line.size, 50, 50)
         })
     }
 }
@@ -27,29 +26,43 @@ function onSetline(txt) {
     renderMeme()
 }
 
-
 function onSelectImg(imgId) {
     setImgId(imgId)
     renderMeme()
-    // gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
-    // renderDraw()
 }
 
-function renderDraw() {
-    drawText(gMeme.lines[0].txt, 50, 50)
-}
-
-function drawText(text, x, y) {
+function drawText(text, color, size, x, y) {
     // gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    // gCtx.font = '45px Arial'
+    gCtx.strokeStyle = 'transparent'
+    gCtx.fillStyle = color
     // gCtx.textAlign = 'center'
     // gCtx.textBaseline = 'middle'
     // gCtx.fillText(text, x, y)
-    gCtx.font = '45px Arial'
+    gCtx.font = `${size}px Arial`
     gCtx.strokeText(text, x, y)
     gCtx.fillText(text, x, y)
+}
+
+function onSetColor(color) {
+    const img = gMeme
+    img.lines[0].color = color
+    renderMeme()
+}
+
+function onSetFontSize(elBtn) {
+    const img = gMeme
+    if (elBtn.innerText === 'A+') {
+        if (img.lines[0].size < 50) img.lines[0].size += 1
+    }
+    else {
+        if (img.lines[0].size > 10) img.lines[0].size -= 1
+    }
+    renderMeme()
+}
+
+function onDownloadImg(elLink) {
+    const imgContent = gCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
 }
 
 function onClearCanvas() {

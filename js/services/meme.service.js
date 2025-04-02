@@ -1,21 +1,27 @@
 'use strict'
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
+let gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
 { id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] }
 ]
 
-var gMeme = {
+let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
         {
             txt: 'Add Text Here',
             size: 20,
-            color: 'red'
+            color: 'white'
+        },
+        {
+            txt: 'Add Text Here',
+            size: 20,
+            color: 'white'
         }
     ]
+
 }
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getImgMeme() {
     return gImgs.find(img => +gMeme.selectedImgId === img.id)
@@ -26,11 +32,12 @@ function setImgId(imgId) {
     gMeme.lines = [
         {
             txt: 'Add Text Here',
-            size: 20,
-            color: 'red'
+            size: 45,
+            color: 'white'
         }
     ]
 }
+
 function setLine(txt) {
     gMeme.lines[0].txt = txt
 }

@@ -16,12 +16,13 @@
         <h1>GALLERY</h1>
 
         <section class="gallery">
-            <img src="img/1.jpg" onclick="onSelectImg(this)">
-            <img src="img/2.jpg" onclick="onSelectImg(this)">
+            <!-- <img src="img/1.jpg" onclick="onSelectImg('1')">
+            <img src="img/2.jpg" onclick="onSelectImg('2')"> -->
         </section>
 
         <section class="editor">
             <H1>EDITOR</H1>
+            <input type="text" oninput="onSetline(this.value)" placeholder="Add Text Here" value="Add Text Here">
 
             <article class="canvas-container">
                 <canvas width="400" height="400" onclick="renderMeme()">

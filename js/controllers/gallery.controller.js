@@ -1,5 +1,8 @@
 'use strict'
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
-
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+function renderGallery() {
+    let imgs = gImgs
+    let strHTMLs = imgs.map(img =>
+        `<img src="${img.url}" onclick="onSelectImg('${img.id}')">`)
+    document.querySelector('.gallery').innerHTML = strHTMLs.join('')
+}

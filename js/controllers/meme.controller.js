@@ -3,61 +3,57 @@
 let gCanvas
 let gCtx
 
-var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'Add Text Here',
-            size: 20,
-            color: 'red'
-        }
-    ]
-}
-
 function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
-    // resizeCanvas()
 
+    renderGallery()
+    // resizeCanvas()
 }
 
 function renderMeme() {
-
-
-}
-function setLine() {
-    gMeme.lines[0].txt += '1'
-
-
-    onDraw()
-}
-
-function onSelectImg(elImg) {
-    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
-    onDraw()
+    const elImg = new Image()
+    elImg.src = getImgMeme().url
+    elImg.onload = function () {
+        gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
+        gMeme.lines.forEach((line, idx) => {
+            drawText(line.txt, 50, 50)
+        })
+    }
 }
 
-function onDraw(ev) {
-    // var pos = getEvPos(ev)
+function onSetline(txt) {
+    setLine(txt)
+    renderMeme()
+}
+
+
+function onSelectImg(imgId) {
+    setImgId(imgId)
+    renderMeme()
+    // gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
+    // renderDraw()
+}
+
+function renderDraw() {
     drawText(gMeme.lines[0].txt, 50, 50)
 }
 
 function drawText(text, x, y) {
     // gCtx.lineWidth = 2
-    // gCtx.strokeStyle = 'brown'
-    // gCtx.fillStyle = 'black'
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = 'white'
     // gCtx.font = '45px Arial'
     // gCtx.textAlign = 'center'
     // gCtx.textBaseline = 'middle'
     // gCtx.fillText(text, x, y)
-    // gCtx.strokeText(text, x, y)
     gCtx.font = '45px Arial'
+    gCtx.strokeText(text, x, y)
     gCtx.fillText(text, x, y)
 }
 
 function onClearCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
 }
 
 function getEvPos(ev) {
@@ -91,5 +87,5 @@ function getEvPos(ev) {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.clientWidth
+    gCanvas.width = elContainer.clientWidth
 }

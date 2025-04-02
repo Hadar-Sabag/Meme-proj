@@ -8,20 +8,32 @@
     <title>Meme Better</title>
 </head>
 
-<body>
+<body onload="onInit()">
+
     <header class="header-container"></header>
 
     <main class="main-container">
+        <h1>GALLERY</h1>
 
-        <section class="gallery-container">
+        <section class="gallery">
+            <img src="img/1.jpg" onclick="onSelectImg(this)">
+            <img src="img/2.jpg" onclick="onSelectImg(this)">
         </section>
 
-        <section class="editor-container">
+        <section class="editor">
+            <H1>EDITOR</H1>
+
+            <article class="canvas-container">
+                <canvas width="400" height="400" onclick="renderMeme()">
+                </canvas>
+            </article>
+
+            <article class="editor-container">
+
+            </article>
 
         </section>
-
     </main>
-
 
     <script src="js/services/utils.js"></script>
     <script src="js/services/storage.js"></script>

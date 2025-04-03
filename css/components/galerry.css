@@ -1,0 +1,23 @@
+.gallery {
+    background-color: #2a2c31;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.gallery img {
+    width: 220px;
+    margin: 10px;
+}
+
+.pic-gallery {
+    text-align: center;
+}
+
+.gallery input {
+    font-family: poppins-medium;
+    font-size: 1.5em;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 50px;
+    padding: 10px;
+}

@@ -1,9 +1,19 @@
-canvas {
-    background-color: white;
-    border: 1px solid black;
-}
+/* SETUP */
+@import url('./setup/vars.css');
+@import url('./setup/typography.css');
 
-.gallery img {
-    width: 200px;
+/* BASICS */
+@import url('./basics/base.css');
+@import url('./basics/layout.css');
+@import url('./basics/helpers.css');
 
-}
+/* COMPONENTS */
+@import url('./components/canvas.css');
+@import url('./components/editor.css');
+@import url('./components/galerry.css');
+@import url('./components/main-header.css');
+@import url('./components/main.footer.css');
+@import url('./components/main-nav.css');
+
+/* Media Queries */
+@import url('./setup/mq.css');

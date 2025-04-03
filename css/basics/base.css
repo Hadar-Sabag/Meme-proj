@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+/* html {
+    color: var(--clr-primary-3);
+    line-height: 1.25;
+    font-family: lato-regular;
+} */
+
+body {
+    margin: 0;
+    background-color: #22252C;
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}

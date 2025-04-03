@@ -4,38 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2ed29c6dba.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
     <title>Meme Better</title>
 </head>
 
-<body onload="onInit()">
+<body onload="onInit()" class="main-layout">
 
-    <header class="header-container"></header>
+    <header class="main-header">
+        <section>
+            <nav class="main-nav">
+                <div class="logo">Meme Better</div>
+                <ul class="list">
+                    <li><a onclick="onSwichPage()" href="#">Gallery</a></li>
+                    <li><a onclick="onSwichPage()" href="#">Saved</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
 
-    <main class="main-container">
-        <h1>GALLERY</h1>
+    <main class="main-container main-layout">
 
-        <section class="gallery"></section>
+        <section class="gallery">
+            <input type="text" placeholder="Search...">
+            <div class="pic-gallery"></div>
+        </section>
 
-        <section class="editor">
-            <H1>EDITOR</H1>
-            <input type="text" oninput="onSetline(this.value)" placeholder="Add Text Here" value="Add Text Here">
+        <section class="editor flex justify-content hidden ">
 
             <article class="canvas-container">
-                <canvas width="400" height="400" onclick="onSelectLine(event)">
+                <canvas width="550" height="550" onclick="onSelectLine(event)">
                 </canvas>
             </article>
 
-            <article class="editor-container">
-                <div class="line operations">
-                    <input type="color" onchange="onSetColor(this.value)">
-                    <button onclick="onSetFontSize(this)">A+</button>
-                    <button onclick="onSetFontSize(this)">A-</button>
-                    <button onclick="onAddLine()">+</button>
-                    <button onclick="onSwitchLine()">↑↓</button>
+            <article class="editor-container grid align-center ">
+                <div class="txt-input">
+                    <input type="text" oninput="onSetline(this.value)" value="Add Text Here">
                 </div>
+
+                <div class="line-navigate">
+                    <button class="switch-txt" onclick="onSwitchLine()"><i
+                            class="fa-solid fa-arrow-down-up-across-line fa-2xl"></i></button>
+                    <button class="add-txt" onclick="onAddLine()"><i class="fa-solid fa-plus fa-2xl"></i></button>
+                    <button class="delete-txt" onclick=""><i class="fa-solid fa-trash fa-2xl"></i></button>
+                </div>
+
+                <div class="line-opratore">
+                    <button class="increase-txt" onclick="onSetFontSize(this)">A+</button>
+                    <button class="decrease-txt" onclick="onSetFontSize(this)">A-</button>
+                    <button class="color-btn">
+                        <i class="fa-solid fa-brush"></i>
+                        <input id="colorPicker" class="color-txt" type="color" onchange="onSetColor(this.value)">
+                    </button>
+
+                </div>
+
                 <div class="actions">
-                    <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
+                    <a href="#"><i class="fa-solid fa-floppy-disk"></i> save</a>
+                    <a href="#"><i class="fa-solid fa-share-nodes"></i> share</a>
+                    <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">
+                        <i class="fa-solid fa-download"></i> Download</a>
                 </div>
 
             </article>

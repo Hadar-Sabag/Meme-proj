@@ -29,6 +29,8 @@ function onSetline(txt) {
 }
 
 function onImgSelect(imgId) {
+    document.querySelector('.editor').classList.remove('hidden')
+    document.querySelector('.gallery').classList.add('hidden')
     setImg(imgId)
     renderMeme()
 }

@@ -2,17 +2,22 @@
 let gNextId = 1
 let maxLine = 7
 
-let gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
-{ id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] }
+let gImgs = [
+    { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['funny', 'cat'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['funny', 'cat'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'cat'] },
+    { id: 6, url: 'img/6.jpg', keywords: ['funny', 'cat'] },
+    { id: 7, url: 'img/7.jpg', keywords: ['funny', 'cat'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['funny', 'cat'] },
+    { id: 9, url: 'img/9.jpg', keywords: ['funny', 'cat'] },
+    { id: 10, url: 'img/10.jpg', keywords: ['funny', 'cat'] },
+    { id: 11, url: 'img/11.jpg', keywords: ['funny', 'cat'] },
+    { id: 12, url: 'img/12.jpg', keywords: ['funny', 'cat'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['funny', 'cat'] },
+    { id: 14, url: 'img/14.jpg', keywords: ['funny', 'cat'] }
 ]
-
-function _creatImg() {
-    return { id: gNextId++, url: 'img/1.jpg', keywords: ['funny', 'cat'] }
-}
-
-function _creatImgs() {
-
-}
 
 let gMeme = {
     selectedImgId: 5,
@@ -72,5 +77,9 @@ function addLine() {
 function switchLine() {
     if (gMeme.selectedLineIdx === gMeme.selectedLineIdx) gMeme.selectedLineIdx += 1
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
+}
+
+function _creatImg() {
+    return { id: gNextId++, url: `img/${gNextId++}.jpg`, keywords: ['funny', 'cat'] }
 }
 

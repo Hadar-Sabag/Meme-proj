@@ -18,7 +18,7 @@ function renderMeme() {
 
         gMeme.lines.forEach((line, idx) => {
             const isSelected = (gMeme.selectedLineIdx == idx) ? true : false
-            drawText(line.txt, line.color, line.size, 50, (idx + 1) * 50, isSelected)
+            drawText(line.txt, line.color, line.size, line.pos.x, line.pos.y, isSelected, idx)
         })
     }
 }
@@ -43,9 +43,28 @@ function onSwitchLine() {
     renderMeme()
 }
 
-function setFrameAround(text, x, y, size, isSelected) {
+function onSelectLine(ev) {
+    const { offsetX, offsetY } = ev
+    const clickedLine = gMeme.lines.find((line, idx) => {
+        const textWidth = getLineWidth(idx)
+        const textHeight = line.size
+
+        const inXRange = offsetX >= line.pos.x && offsetX <= (line.pos.x + textWidth)
+        const inYRange = offsetY >= (line.pos.y - textHeight / 2) && offsetY <= (line.pos.y + textHeight / 2)
+
+        return inXRange && inYRange
+    })
+
+    if (clickedLine) {
+        const idx = gMeme.lines.indexOf(clickedLine)
+        gMeme.selectedLineIdx = idx
+        renderMeme()
+    }
+}
+
+function setFrameAround(text, x, y, size, isSelected, idx) {
     if (isSelected) {
-        const textWidth = gCtx.measureText(text).width
+        const textWidth = getLineWidth(idx)
         const textHeight = size
 
         gCtx.beginPath()
@@ -55,7 +74,7 @@ function setFrameAround(text, x, y, size, isSelected) {
     }
 }
 
-function drawText(text, color, size, x, y, isSelected) {
+function drawText(text, color, size, x, y, isSelected, idx) {
     // gCtx.lineWidth = 40
     // gCtx.textAlign = 'center'
     // gCtx.textBaseline = 'middle'
@@ -66,7 +85,8 @@ function drawText(text, color, size, x, y, isSelected) {
     gCtx.strokeText(text, x, y)
     gCtx.fillText(text, x, y)
 
-    setFrameAround(text, x, y, size, isSelected)
+    setLineWidth(gCtx.measureText(text).width, idx)
+    setFrameAround(text, x, y, size, isSelected, idx)
 }
 
 function onSetColor(color) {

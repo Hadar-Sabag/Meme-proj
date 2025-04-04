@@ -6,15 +6,12 @@
     border-radius: 30px;
     width: 80%;
     max-width: 550px;
-    min-height: 550px;
+    height: 550px;
     background-color: #a6a9ad13;
     justify-items: center;
     margin: 0 auto;
     padding: 10px;
 }
-
-
-
 
 .txt-input input {
     font-family: poppins-medium;
@@ -38,7 +35,8 @@
     height: 60px;
     border-radius: 10px;
     font-size: 2em;
-    font-weight: bold;
+    font-family: poppins-semi-bold;
+    /* text-align: center; */
 }
 
 .color-btn {

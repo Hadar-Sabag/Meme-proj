@@ -53,16 +53,19 @@
     cursor: pointer;
 }
 
+.actions {
+    display: flex;
+}
+
 .actions a {
     text-decoration: none;
-    min-width: 150px;
-    min-height: 40px;
-    display: inline-block;
+    width: 150px;
+    height: 40px;
+    display: block;
     background-color: white;
     border-radius: 15px;
     text-align: center;
     line-height: 40px;
-    vertical-align: middle;
     margin: 10px;
     font-family: poppins-medium;
     font-size: 1.25em;

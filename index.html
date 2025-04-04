@@ -11,6 +11,8 @@
 
 <body onload="onInit()" class="main-layout">
 
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
     <header class="main-header">
         <section>
             <nav class="main-nav">
@@ -19,6 +21,14 @@
                     <li><a onclick="onSwichPage()" href="#">Gallery</a></li>
                     <li><a onclick="onSwichPage()" href="#">Saved</a></li>
                 </ul>
+                <!-- hamburger menu -->
+                <button class="btn-toggle-menu" onclick="toggleMenu()">
+                    <div class="hamburger-lines">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+                </button>
             </nav>
         </section>
     </header>

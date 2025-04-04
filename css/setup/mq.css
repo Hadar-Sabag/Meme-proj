@@ -1,5 +1,6 @@
 /* MOBILE ONLY */
 @media (max-width: 800px) {
+    /* header */
 
     .main-header {
         grid-column: 1/-1;
@@ -35,6 +36,7 @@
         padding: 0.4rem 1rem;
     }
 
+    /* editor-canvas */
 
     .editor {
         flex-direction: column;
@@ -42,7 +44,7 @@
     }
 
     canvas {
-        max-width: 400px;
+        max-width: 300px;
         align-items: center;
 
         justify-content: center;
@@ -52,8 +54,8 @@
         display: grid;
         grid-template-rows: 0.3fr 0.3fr 0.3fr 0.8fr;
         width: 100%;
-        max-width: 400px;
-        height: 400px;
+        max-width: 300px;
+        height: 300px;
         gap: 10px;
     }
 

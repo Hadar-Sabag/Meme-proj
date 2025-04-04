@@ -3,11 +3,13 @@
 let gCanvas
 let gCtx
 
+
 function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
 
     renderGallery()
+    renderPics()
 }
 
 function renderMeme() {
@@ -42,6 +44,11 @@ function onAddLine() {
 
 function onSwitchLine() {
     switchLine()
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
     renderMeme()
 }
 
@@ -109,14 +116,59 @@ function onSetFontSize(elBtn) {
     renderMeme()
 }
 
-function onDownloadImg(elLink) {
-    const imgContent = gCanvas.toDataURL('image/jpeg')
-    elLink.href = imgContent
+function clearFrame() {
+    gMeme.selectedLineIdx = -1
+    renderMeme()
 }
 
-function onClearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+
+function onDownloadImg(elLink) {
+    clearFrame()
+
+    setTimeout(() => {
+        const imgContent = gCanvas.toDataURL('image/jpeg')
+        elLink.href = imgContent
+
+        gMeme.selectedLineIdx = 0
+        renderMeme()
+    }, 100)
 }
+
+function onUploadToFB(url) {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+}
+
+function onUploadImg(ev) {
+    ev.preventDefault()
+    const canvasData = gCanvas.toDataURL('image/jpeg')
+
+    // After a successful upload, allow the user to share on Facebook
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        onUploadToFB(encodedUploadedImgUrl)
+    }
+    uploadImg(canvasData, onSuccess)
+}
+
+async function uploadImg(imgData, onSuccess) {
+    const CLOUD_NAME = 'webify'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData()
+    formData.append('file', imgData)
+    formData.append('upload_preset', 'webify')
+    try {
+        const res = await fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+        const data = await res.json()
+        onSuccess(data.secure_url)
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 
 function getEvPos(ev) {
     const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']

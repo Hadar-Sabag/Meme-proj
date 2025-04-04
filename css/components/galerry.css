@@ -7,6 +7,7 @@
 .gallery img {
     width: 220px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .pic-gallery {

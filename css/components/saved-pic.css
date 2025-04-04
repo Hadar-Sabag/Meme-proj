@@ -1,0 +1,26 @@
+.saved {
+    background-color: #2a2c31;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.pic-saved img {
+    width: 220px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.pic-saved button {
+    text-align: center;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.788);
+    color: gray;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    transform: translate(-45px, 15px);
+    font-size: 1.2em;
+    cursor: pointer;
+}

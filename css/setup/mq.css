@@ -46,12 +46,13 @@
     canvas {
         max-width: 300px;
         align-items: center;
-
         justify-content: center;
     }
 
     .editor-container {
         display: grid;
+        align-items: center;
+        justify-content: center;
         grid-template-rows: 0.3fr 0.3fr 0.3fr 0.8fr;
         width: 100%;
         max-width: 300px;
@@ -60,29 +61,42 @@
     }
 
     .txt-input input {
-        font-size: 1.5em;
+        font-size: 1em;
         max-width: 450px;
     }
 
     .line-navigate button {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
+        font-size: 0.7em;
     }
 
     .line-opratore button {
         cursor: pointer;
-        width: 50px;
-        height: 50px;
-        font-size: 1.5em;
+        width: 40px;
+        height: 40px;
+        font-size: 1.3em;
+        text-align: center;
     }
 
     .actions {
         display: flex;
+        margin: 0;
     }
 
     .actions a {
-        font-size: 1em;
-        width: 110px;
+        font-size: 0.8em;
+        width: 90px;
+        height: 40px;
+    }
+
+    .actions a:nth-child(1) {
+        width: 60px;
+        height: 40px;
+    }
+
+    .actions a:nth-child(2) {
+        width: 60px;
         height: 40px;
     }
 

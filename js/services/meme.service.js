@@ -51,7 +51,7 @@ function setImg(imgId) {
 }
 
 function setLineTxt(txt) {
-    gMeme.lines.map(line => line.txt = txt)
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
 function setLineWidth(width, idx) {

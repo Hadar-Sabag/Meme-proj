@@ -2,7 +2,7 @@
 
 let gCanvas
 let gCtx
-
+let gIsTextDragged = false
 
 function onInit() {
     gCanvas = document.querySelector('canvas')
@@ -52,7 +52,7 @@ function onDeleteLine() {
     renderMeme()
 }
 
-function onSelectLine(ev) {
+function onSelectText(ev) {
     const { offsetX, offsetY } = ev
     const clickedLine = gMeme.lines.find((line, idx) => {
         const textWidth = getLineWidth(idx)
@@ -71,14 +71,57 @@ function onSelectLine(ev) {
     }
 }
 
+
+
+function onMoveText(ev) {
+    if (!gIsTextDragged) return
+
+    const { offsetX, offsetY } = ev
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+
+    const dx = offsetX - selectedLine.pos.x
+    const dy = offsetY - selectedLine.pos.y
+
+    selectedLine.pos.x += dx
+    selectedLine.pos.y += dy
+
+    renderMeme()
+}
+
+function onReleaseText() {
+    gIsTextDragged = false
+}
+
+function onDown(ev) {
+    onSelectText(ev) // בודק אם הטקסט נבחר
+    const { offsetX, offsetY } = ev
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+
+    const textWidth = getLineWidth(gMeme.selectedLineIdx)
+    const textHeight = selectedLine.size
+
+    const inXRange = offsetX >= selectedLine.pos.x && offsetX <= (selectedLine.pos.x + textWidth)
+    const inYRange = offsetY >= (selectedLine.pos.y - textHeight / 2) && offsetY <= (selectedLine.pos.y + textHeight / 2)
+
+    if (inXRange && inYRange) {
+        gIsTextDragged = true
+    }
+}
+
+function onUp() {
+    onReleaseText()
+}
+
+
+
 function setFrameAround(text, x, y, size, isSelected, idx) {
     if (isSelected) {
         const textWidth = getLineWidth(idx)
         const textHeight = size
 
         gCtx.beginPath()
-        gCtx.strokeStyle = 'white'
-        gCtx.lineWidth = 2
+        gCtx.strokeStyle = 'black'
+        gCtx.lineWidth = 3
         gCtx.strokeRect(x - 5, y - textHeight, textWidth + 10, textHeight + 10)
     }
 }
@@ -101,7 +144,6 @@ function drawText(text, color, size, x, y, isSelected, idx) {
 function onSetColor(color) {
     const img = gMeme
     img.lines[gMeme.selectedLineIdx].color = color
-    // gMeme.lines.map(line => line.color = color)
     renderMeme()
 }
 
@@ -170,34 +212,53 @@ async function uploadImg(imgData, onSuccess) {
 }
 
 
+// function getEvPos(ev) {
+//     const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+//     let pos = {
+//         x: ev.offsetX,
+//         y: ev.offsetY,
+//     }
+
+//     if (TOUCH_EVS.includes(ev.type)) {
+//         //* Prevent triggering the default mouse behavior
+//         ev.preventDefault()
+
+//         //* Gets the first touch point (could be multiple in touch event)
+//         ev = ev.changedTouches[0]
+
+//         /* 
+//         * Calculate touch coordinates relative to canvas 
+//         * position by subtracting canvas offsets (left and top) from page coordinates
+//         */
+//         pos = {
+//             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+//             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+//             // x: ev.pageX ,
+//             // y: ev.pageY ,
+//         }
+//     }
+//     return pos
+// }
+
 function getEvPos(ev) {
     const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-    let pos = {
-        x: ev.offsetX,
-        y: ev.offsetY,
-    }
+    let pos = { x: ev.offsetX, y: ev.offsetY }
 
     if (TOUCH_EVS.includes(ev.type)) {
-        //* Prevent triggering the default mouse behavior
+        // מונע פעולה ברירת מחדל (כמו גלילה או זום)
         ev.preventDefault()
 
-        //* Gets the first touch point (could be multiple in touch event)
-        ev = ev.changedTouches[0]
-
-        /* 
-        * Calculate touch coordinates relative to canvas 
-        * position by subtracting canvas offsets (left and top) from page coordinates
-        */
+        // אם מדובר בטאץ', נשתמש ב-touches
         pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-            // x: ev.pageX ,
-            // y: ev.pageY ,
+            x: ev.touches[0].pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.touches[0].pageY - ev.target.offsetTop - ev.target.clientTop,
         }
     }
     return pos
 }
+
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')

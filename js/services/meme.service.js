@@ -4,9 +4,9 @@ let maxLine = 7
 const gKeyWords = ['funny', 'animal', 'angry', 'awkward', 'politics']
 let gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['angry', 'politics'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['animal'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['animal', 'dog'] },
     { id: 3, url: 'img/3.jpg', keywords: ['animal'] },
-    { id: 4, url: 'img/4.jpg', keywords: ['cat'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['animal', 'cat'] },
     { id: 5, url: 'img/5.jpg', keywords: ['funny'] },
     { id: 6, url: 'img/6.jpg', keywords: ['funny'] },
     { id: 7, url: 'img/7.jpg', keywords: ['funny'] },

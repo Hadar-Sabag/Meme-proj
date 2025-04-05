@@ -37,7 +37,7 @@
 
         <section class="gallery">
 
-            <input list="browsers" placeholder="Search...">
+            <input oninput="onSetFilterBy(this)" list="browsers" placeholder="Search...">
             <datalist id="browsers">
                 <option value="Funny">
                 <option value="Animal">
@@ -56,9 +56,21 @@
         <section class="editor flex justify-content align-center hidden ">
 
             <article class="canvas-container">
-                <canvas width="550" height="550" onclick="onSelectLine(event)">
+                <canvas width="550" height="550" onclick="onSelectText(event)" onmousedown="onDown(event)"
+                    onmousemove="onMoveText(event)" onmouseup="onUp(event)" ontouchstart="onDown(event)"
+                    ontouchmove="onMoveText(event)" ontouchend="onUp(event)">
                 </canvas>
             </article>
+
+
+            <!-- <div class="canvas-container">
+                <canvas width="400" height="400" onmousedown="onDown(event)" ontouchstart="onDown(event)"
+                    onmouseup="onUp()" ontouchend="onUp()" onmousemove="onMove(event)"
+                    ontouchmove="onMove(event)"></canvas>
+            </div> -->
+
+
+
 
             <article class="editor-container grid align-center ">
                 <div class="txt-input">
@@ -78,7 +90,7 @@
                     <button class="decrease-txt" onclick="onSetFontSize(this)">A-</button>
                     <button class="color-btn">
                         <i class="fa-solid fa-brush"></i>
-                        <input id="colorPicker" class="color-txt" type="color" onchange="onSetColor(this.value)">
+                        <input id="colorPicker" class="color-txt" type="color" oninput="onSetColor(this.value)">
                     </button>
 
                 </div>
@@ -99,6 +111,7 @@
     <script src="js/services/storage.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/services/savedpic.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
     <script src="js/controllers/gallery.controller.js"></script>
     <script src="js/controllers/savedpic.controller.js"></script>
     <script src="js/controllers/meme.controller.js"></script>

@@ -11,6 +11,7 @@
     justify-items: center;
     margin: 0 auto;
     padding: 10px;
+    box-shadow: 0px -1px 10px #51555f;
 }
 
 .txt-input input {
@@ -18,15 +19,47 @@
     font-size: 2em;
     width: 100%;
     max-width: 450px;
-    border-radius: 10px;
     text-align: center;
+    border-radius: 60px;
+    padding: 10px;
+    border: solid #626470 1px;
+    background-color: transparent;
+    color: white;
 }
+
+
 
 .line-navigate button {
     cursor: pointer;
     width: 60px;
     height: 60px;
     border-radius: 10px;
+    border: none;
+    color: white;
+}
+
+.line-navigate button:nth-child(1) {
+    background-color: #71b5f1;
+}
+
+.line-navigate button:nth-child(2) {
+    background-color: #71f191;
+}
+
+.line-navigate button:nth-child(3) {
+    background-color: #f18b71;
+}
+
+.line-navigate button:nth-child(1):hover {
+    background-color: #a3c9ea;
+}
+
+.line-navigate button:nth-child(2):hover {
+    background-color: #abe4ba;
+}
+
+.line-navigate button:nth-child(3):hover {
+    background-color: #eeb2a3;
 }
 
 .line-opratore button {
@@ -37,6 +70,12 @@
     font-size: 2em;
     font-family: poppins-semi-bold;
     text-align: center;
+    color: white;
+    background-color: transparent;
+}
+
+.line-opratore button:hover {
+    background-color: #6a6d7077;
 }
 
 .color-btn {
@@ -62,12 +101,35 @@
     width: 150px;
     height: 40px;
     display: block;
-    background-color: white;
+    color: white;
     border-radius: 15px;
     text-align: center;
     line-height: 40px;
     font-family: poppins-medium;
     font-size: 1.25em;
-    color: black;
     margin: 3px;
+}
+
+.actions a:nth-child(1) {
+    background-color: #9f5bd0;
+}
+
+.actions a:nth-child(2) {
+    background-color: #5b7ed0;
+}
+
+.actions a:nth-child(3) {
+    background-color: #42a953;
+}
+
+.actions a:nth-child(1):hover {
+    background-color: #b189ce;
+}
+
+.actions a:nth-child(2):hover {
+    background-color: #95a7d1;
+}
+
+.actions a:nth-child(3):hover {
+    background-color: #76b180;
 }

@@ -53,13 +53,15 @@ function onDeleteLine() {
 }
 
 function onSelectText(ev) {
-    const { offsetX, offsetY } = ev
+    const pos = getEvPos(ev)
+    const { x, y } = pos
+
     const clickedLine = gMeme.lines.find((line, idx) => {
         const textWidth = getLineWidth(idx)
         const textHeight = line.size
 
-        const inXRange = offsetX >= line.pos.x && offsetX <= (line.pos.x + textWidth)
-        const inYRange = offsetY >= (line.pos.y - textHeight / 2) && offsetY <= (line.pos.y + textHeight / 2)
+        const inXRange = x >= line.pos.x && x <= (line.pos.x + textWidth)
+        const inYRange = y >= (line.pos.y - textHeight / 2) && y <= (line.pos.y + textHeight / 2)
 
         return inXRange && inYRange
     })
@@ -72,15 +74,16 @@ function onSelectText(ev) {
 }
 
 
-
 function onMoveText(ev) {
     if (!gIsTextDragged) return
 
-    const { offsetX, offsetY } = ev
+    const pos = getEvPos(ev)
+    const { x, y } = pos
+
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
 
-    const dx = offsetX - selectedLine.pos.x
-    const dy = offsetY - selectedLine.pos.y
+    const dx = x - selectedLine.pos.x
+    const dy = y - selectedLine.pos.y
 
     selectedLine.pos.x += dx
     selectedLine.pos.y += dy
@@ -88,25 +91,29 @@ function onMoveText(ev) {
     renderMeme()
 }
 
+
 function onReleaseText() {
     gIsTextDragged = false
 }
 
 function onDown(ev) {
-    onSelectText(ev) // בודק אם הטקסט נבחר
-    const { offsetX, offsetY } = ev
+    const pos = getEvPos(ev)
+    onSelectText(ev)
+    const { x, y } = pos
+
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
 
     const textWidth = getLineWidth(gMeme.selectedLineIdx)
     const textHeight = selectedLine.size
 
-    const inXRange = offsetX >= selectedLine.pos.x && offsetX <= (selectedLine.pos.x + textWidth)
-    const inYRange = offsetY >= (selectedLine.pos.y - textHeight / 2) && offsetY <= (selectedLine.pos.y + textHeight / 2)
+    const inXRange = x >= selectedLine.pos.x && x <= (selectedLine.pos.x + textWidth)
+    const inYRange = y >= (selectedLine.pos.y - textHeight / 2) && y <= (selectedLine.pos.y + textHeight / 2)
 
     if (inXRange && inYRange) {
         gIsTextDragged = true
     }
 }
+
 
 function onUp() {
     onReleaseText()

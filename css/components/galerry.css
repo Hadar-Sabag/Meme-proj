@@ -1,5 +1,6 @@
 .gallery {
     background-color: #2a2c31;
+    box-shadow: 0px -1px 10px #51555f;
     padding: 20px;
     border-radius: 50px;
 }
@@ -8,6 +9,10 @@
     width: 220px;
     margin: 10px;
     cursor: pointer;
+}
+
+.gallery img:hover {
+    box-shadow: 1px 0px 12px 9px #51555f;
 }
 
 .pic-gallery {
@@ -19,6 +24,9 @@
     font-size: 1.5em;
     width: 100%;
     max-width: 450px;
-    border-radius: 50px;
+    border-radius: 60px;
     padding: 10px;
+    border: solid #3a3c44 1px;
+    background-color: transparent;
+    margin: 20px;
 }

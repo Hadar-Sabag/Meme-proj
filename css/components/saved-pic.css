@@ -11,16 +11,42 @@
     cursor: pointer;
 }
 
+.pic-saved img:hover {
+    box-shadow: 1px 0px 12px 9px #51555f;
+}
+
 .pic-saved button {
+    background-color: transparent;
     text-align: center;
     border: none;
-    background-color: rgba(255, 255, 255, 0.788);
-    color: gray;
+    color: rgb(74, 73, 73);
     border-radius: 50%;
     width: 25px;
     height: 25px;
     position: absolute;
     transform: translate(-45px, 15px);
     font-size: 1.2em;
+    font-weight: bold;
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.788);
+}
+
+.pic-saved button:hover {
+    font-size: 1.3em;
+}
+
+.saved-msg {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #2a2c31;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1em;
+    font-family: poppins-semi-bold;
+
 }

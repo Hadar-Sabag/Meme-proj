@@ -33,9 +33,18 @@ function onSavePic() {
         const imgUrl = gCanvas.toDataURL()
         addPic(imgUrl)
         renderPics()
+        showModal()
 
         gMeme.selectedLineIdx = 0
         renderMeme()
     }, 100)
 }
 
+
+function showModal() {
+    const modal = document.querySelector('.saved-msg')
+    modal.style.display = 'block'
+    setTimeout(() => {
+        modal.style.display = 'none'
+    }, 3000)
+}

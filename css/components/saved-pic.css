@@ -1,7 +1,9 @@
 .saved {
-    background-color: #2a2c31;
+    background-color: #3c4454;
+    box-shadow: 0px -1px 10px #747988;
     padding: 20px;
     border-radius: 50px;
+    margin-block: 50px;
 }
 
 .pic-saved img {
@@ -33,6 +35,14 @@
 
 .pic-saved button:hover {
     font-size: 1.3em;
+}
+
+.pic-saved p {
+    color: rgb(160, 159, 159);
+    font-size: 1.3em;
+    text-align: center;
+    font-family: poppins-medium, Arial, Helvetica, sans-serif;
+
 }
 
 .saved-msg {

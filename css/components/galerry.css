@@ -1,6 +1,6 @@
 .gallery {
-    background-color: #2a2c31;
-    box-shadow: 0px -1px 10px #51555f;
+    background-color: #3c4454;
+    box-shadow: 0px -1px 10px #747988;
     padding: 20px;
     border-radius: 50px;
     margin-block: 55px;
@@ -26,10 +26,10 @@
     text-align: center;
     width: 100%;
     max-width: 300px;
-    border-radius: 60px;
+    border-radius: 20px;
     padding: 10px;
-    border: solid #3a3c44 4px;
-    /* border: solid 5px linear-gradient(to left, #b583ec, #6b98cc); */
+    border: solid #727684 4px;
+    box-shadow: 0px -1px 10px #747988;
     background-color: transparent;
     margin: 20px;
 }

@@ -20,7 +20,7 @@ function renderMeme() {
 
         gMeme.lines.forEach((line, idx) => {
             const isSelected = (gMeme.selectedLineIdx == idx) ? true : false
-            drawText(line.txt, line.color, line.size, line.pos.x, line.pos.y, isSelected, idx)
+            drawText(line.txt, line.color, line.outlineColor, line.size, line.font, line.pos.x, line.pos.y, isSelected, idx)
         })
     }
 }
@@ -133,13 +133,13 @@ function setFrameAround(text, x, y, size, isSelected, idx) {
     }
 }
 
-function drawText(text, color, size, x, y, isSelected, idx) {
+function drawText(text, color, outlineColor, size, font, x, y, isSelected, idx) {
     // gCtx.lineWidth = 40
     // gCtx.textAlign = 'center'
     // gCtx.textBaseline = 'middle'
-    gCtx.strokeStyle = 'transparent'
+    gCtx.strokeStyle = outlineColor
     gCtx.fillStyle = color
-    gCtx.font = `${size}px Arial`
+    gCtx.font = `${size}px '${font}'`
 
     gCtx.strokeText(text, x, y)
     gCtx.fillText(text, x, y)
@@ -154,6 +154,12 @@ function onSetColor(color) {
     renderMeme()
 }
 
+function onSetOutlineColor(color) {
+    const img = gMeme
+    img.lines[gMeme.selectedLineIdx].outlineColor = color
+    renderMeme()
+}
+
 function onSetFontSize(elBtn) {
     const img = gMeme
     if (elBtn.innerText === 'A+') {
@@ -162,6 +168,12 @@ function onSetFontSize(elBtn) {
     else {
         if (img.lines[gMeme.selectedLineIdx].size > 10) img.lines[gMeme.selectedLineIdx].size -= 1
     }
+    renderMeme()
+}
+
+function onSetFontFamily(font) {
+    const img = gMeme
+    img.lines[gMeme.selectedLineIdx].font = font
     renderMeme()
 }
 

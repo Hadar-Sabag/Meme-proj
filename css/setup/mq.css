@@ -12,7 +12,6 @@
         top: -20px;
         right: -20px;
         height: 100dvh;
-        /* background-color: #818fc1e2; */
         background: linear-gradient(to left, #c9a8ecdc, #91afd2df);
         border-radius: 10px;
         min-width: 200px;
@@ -44,11 +43,6 @@
         width: 300px;
     }
 
-    /* .pic-gallery {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    } */
-
     /* editor-canvas */
 
     .editor {
@@ -70,7 +64,7 @@
         width: 100%;
         max-width: 300px;
         height: 300px;
-        gap: 10px;
+        gap: 1em;
     }
 
     .txt-input input {
@@ -84,12 +78,23 @@
         font-size: 0.7em;
     }
 
+    .line-opratore {
+        width: 200px;
+        gap: 0.5em;
+    }
+
     .line-opratore button {
         cursor: pointer;
         width: 40px;
         height: 40px;
         font-size: 1.3em;
         text-align: center;
+    }
+
+    .line-opratore select {
+        height: 40px;
+        font-size: 0.9em;
+        max-width: 100px;
     }
 
     .actions {
@@ -112,8 +117,9 @@
         width: 60px;
         height: 40px;
     }
-
 }
+
+
 
 /* MEDIUM */
 @media (min-width: 800px) {

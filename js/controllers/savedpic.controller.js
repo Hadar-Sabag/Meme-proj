@@ -2,13 +2,19 @@
 
 function renderPics() {
     const pics = getPics()
+    const elContainer = document.querySelector('.pic-saved')
+
+    if (!pics || pics.length === 0) {
+        elContainer.innerHTML = '<p>No saved pictures...</p>'
+        return
+    }
     var strHTMLs = pics.map(pic => {
         return `
          <img onclick="onSelectedPic(this)" src="${pic.imgUrl}" alt="">
           <button onclick="onRemovePic('${pic.id}')">x</button>
          `
     })
-    document.querySelector('.pic-saved').innerHTML = strHTMLs.join('')
+    elContainer.innerHTML = strHTMLs.join('')
 }
 
 function onRemovePic(picId) {

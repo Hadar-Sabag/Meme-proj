@@ -77,11 +77,22 @@
                 </div>
 
                 <div class="line-opratore">
+                    <select name="font-family" onchange="onSetFontFamily(this.value)">
+                        <option value="Impact" selected>Impact</option>
+                        <option value="Ariel">Ariel</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Consolas">Consolas</option>
+                        <option value="Brush Script MT">Brush Script MT</option>
+                    </select>
                     <button class="increase-txt" onclick="onSetFontSize(this)">A+</button>
                     <button class="decrease-txt" onclick="onSetFontSize(this)">A-</button>
                     <button class="color-btn">
-                        <i class="fa-solid fa-brush"></i>
+                        <i class="fa-solid fa-fill-drip"></i>
                         <input id="colorPicker" class="color-txt" type="color" oninput="onSetColor(this.value)">
+                    </button>
+                    <button class="color-outline-btn">
+                        <i class="fa-solid fa-brush"></i>
+                        <input id="colorPicker" class="color-txt" type="color" oninput="onSetOutlineColor(this.value)">
                     </button>
 
                 </div>

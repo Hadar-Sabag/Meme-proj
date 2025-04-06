@@ -24,8 +24,9 @@
     border-radius: 60px;
     padding: 10px;
     border: solid #626470 1px;
+    box-shadow: 0px -1px 10px #747988;
     background-color: transparent;
-    color: white;
+    color: rgb(160, 159, 159);
 }
 
 .line-navigate button {
@@ -61,6 +62,14 @@
     background-color: #eeb2a3;
 }
 
+.line-opratore {
+    display: grid;
+    width: 300px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.1em;
+}
+
 .line-opratore button {
     cursor: pointer;
     width: 60px;
@@ -77,8 +86,26 @@
     background-color: #6a6d7077;
 }
 
+.increase-txt {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.decrease-txt {
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
 .color-btn {
     position: relative;
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+.color-outline-btn {
+    position: relative;
+    grid-column: 4/5;
+    grid-row: 2/3;
 }
 
 .color-txt {
@@ -89,6 +116,32 @@
     height: 100%;
     opacity: 0;
     cursor: pointer;
+}
+
+.line-opratore select {
+    grid-column: 1/4;
+    grid-row: 2/3;
+    height: 60px;
+    border-radius: 10px;
+    padding: 0.6em;
+    font-size: 1.4em;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    max-width: 150px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #a6a9ad44;
+    box-shadow: 1px 2px 0px 0px #0a0a0a;
+    ;
+}
+
+.line-opratore select option {
+    background-color: #575d6f;
+}
+
+.line-opratore select:hover {
+    background-color: #6a6d7077;
 }
 
 .actions {
@@ -110,7 +163,7 @@
 }
 
 .actions a:nth-child(1) {
-    background-color: #9f5bd0;
+    background-color: #ab6fd6;
 }
 
 .actions a:nth-child(2) {
@@ -118,7 +171,7 @@
 }
 
 .actions a:nth-child(3) {
-    background-color: #42a953;
+    background-color: #6cca7c;
 }
 
 .actions a:nth-child(1):hover {

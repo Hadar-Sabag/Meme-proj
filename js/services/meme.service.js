@@ -26,7 +26,8 @@ let gMeme = {
         {
             txt: 'Add Text Here',
             size: 45,
-            color: 'white'
+            color: 'white',
+            outlineColor: 'black'
         }
     ]
 }
@@ -43,7 +44,9 @@ function setImg(imgId) {
         {
             txt: 'Add Text Here',
             size: 45,
+            font: 'Impact',
             color: 'white',
+            outlineColor: 'black',
             pos: { x: 50, y: 50 },
             width: 0
         }
@@ -67,6 +70,7 @@ function addLine() {
         gMeme.lines.push({
             txt: 'Add Text Here',
             size: 45,
+            font: 'Impact',
             color: 'white',
             pos: { x: 50, y: (gMeme.lines.length + 1) * 50 },
             width: 0

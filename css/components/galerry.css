@@ -20,7 +20,7 @@
 }
 
 .gallery input {
-    font-family: poppins-medium;
+    font-family: poppins-medium, Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     width: 100%;
     max-width: 450px;

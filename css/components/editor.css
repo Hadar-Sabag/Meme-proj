@@ -15,7 +15,7 @@
 }
 
 .txt-input input {
-    font-family: poppins-medium;
+    font-family: poppins-medium, Arial, Helvetica, sans-serif;
     font-size: 2em;
     width: 100%;
     max-width: 450px;
@@ -26,8 +26,6 @@
     background-color: transparent;
     color: white;
 }
-
-
 
 .line-navigate button {
     cursor: pointer;
@@ -68,7 +66,7 @@
     height: 60px;
     border-radius: 10px;
     font-size: 2em;
-    font-family: poppins-semi-bold;
+    font-family: poppins-semi-bold, Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
     background-color: transparent;
@@ -105,7 +103,7 @@
     border-radius: 15px;
     text-align: center;
     line-height: 40px;
-    font-family: poppins-medium;
+    font-family: poppins-medium, Arial, Helvetica, sans-serif;
     font-size: 1.25em;
     margin: 3px;
 }

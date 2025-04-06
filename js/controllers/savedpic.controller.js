@@ -40,7 +40,6 @@ function onSavePic() {
     }, 100)
 }
 
-
 function showModal() {
     const modal = document.querySelector('.saved-msg')
     modal.style.display = 'block'

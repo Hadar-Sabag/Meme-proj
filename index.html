@@ -47,6 +47,16 @@
                 <option value="Politics">
             </datalist>
 
+            <section class="upload-img">
+                <input onchange="onUserImgUpload(event)" type="file" accept=".jpg, .jpeg, .png, .webp"
+                    class="file-input" id="file-input" name="image" />
+
+                <label for="file-input">
+                    <article>Upload Img</article>
+                    <article><i class="fa-solid fa-upload"></i></article>
+                </label>
+            </section>
+
             <div class="pic-gallery"></div>
         </section>
 

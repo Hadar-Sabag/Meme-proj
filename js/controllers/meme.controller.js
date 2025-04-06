@@ -19,7 +19,7 @@ function renderMeme() {
         gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 
         gMeme.lines.forEach((line, idx) => {
-            const isSelected = (gMeme.selectedLineIdx == idx) ? true : false
+            const isSelected = (gMeme.selectedLineIdx === idx) ? true : false
             drawText(line.txt, line.color, line.outlineColor, line.size, line.font, line.pos.x, line.pos.y, isSelected, idx)
         })
     }
@@ -211,24 +211,6 @@ function onUploadImg(ev) {
     uploadImg(canvasData, onSuccess)
 }
 
-async function uploadImg(imgData, onSuccess) {
-    const CLOUD_NAME = 'webify'
-    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
-    const formData = new FormData()
-    formData.append('file', imgData)
-    formData.append('upload_preset', 'webify')
-    try {
-        const res = await fetch(UPLOAD_URL, {
-            method: 'POST',
-            body: formData
-        })
-        const data = await res.json()
-        onSuccess(data.secure_url)
-
-    } catch (err) {
-        console.log(err)
-    }
-}
 
 function getEvPos(ev) {
     const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
@@ -246,8 +228,30 @@ function getEvPos(ev) {
     return pos
 }
 
+function onUserImgUpload(ev) {
+    const reader = new FileReader()
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gCanvas.width = elContainer.clientWidth
+    reader.onload = function (event) {
+        const img = new Image()
+        img.src = event.target.result
+
+        img.onload = () => {
+            const newImg = {
+                id: gImgs.length + 1,
+                url: img.src,
+                keywords: ['user']
+            }
+
+            gImgs.unshift(newImg)
+            renderGallery()
+
+            setImg(newImg.id)
+            document.querySelector('.editor').classList.remove('hidden')
+            document.querySelector('.gallery').classList.add('hidden')
+            renderMeme()
+        }
+    }
+
+    reader.readAsDataURL(ev.target.files[0])
 }
+

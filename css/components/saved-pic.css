@@ -42,7 +42,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #2a2c31;
+    background: linear-gradient(to left, #b583ec, #6b98cc);
     color: white;
     text-align: center;
     padding: 10px 0;

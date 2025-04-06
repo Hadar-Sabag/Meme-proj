@@ -12,7 +12,8 @@
         top: -20px;
         right: -20px;
         height: 100dvh;
-        background-color: #818fc1e2;
+        /* background-color: #818fc1e2; */
+        background: linear-gradient(to left, #c9a8ecdc, #91afd2df);
         border-radius: 10px;
         min-width: 200px;
         transform: translateX(100%);
@@ -36,6 +37,17 @@
         display: flex;
         padding: 0.4rem 1rem;
     }
+
+    /* gallery */
+
+    .gallery img {
+        width: 300px;
+    }
+
+    /* .pic-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    } */
 
     /* editor-canvas */
 

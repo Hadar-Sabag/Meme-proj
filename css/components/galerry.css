@@ -3,6 +3,7 @@
     box-shadow: 0px -1px 10px #51555f;
     padding: 20px;
     border-radius: 50px;
+    margin-block: 55px;
 }
 
 .gallery img {
@@ -21,12 +22,14 @@
 
 .gallery input {
     font-family: poppins-medium, Arial, Helvetica, sans-serif;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    text-align: center;
     width: 100%;
-    max-width: 450px;
+    max-width: 300px;
     border-radius: 60px;
     padding: 10px;
-    border: solid #3a3c44 1px;
+    border: solid #3a3c44 4px;
+    /* border: solid 5px linear-gradient(to left, #b583ec, #6b98cc); */
     background-color: transparent;
     margin: 20px;
 }

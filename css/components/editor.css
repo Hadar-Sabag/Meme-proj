@@ -1,5 +1,6 @@
 .editor {
     gap: 80px;
+    margin-block: 50px;
 }
 
 .editor-container {
